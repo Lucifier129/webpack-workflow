@@ -1,0 +1,26 @@
+{
+  "name": "ES6-workflow",
+  "version": "0.0.1",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "./node_modules/.bin/babel-node ./bin/www",
+    "build": "node ./build.js",
+    "test": "./node_modules/.bin/babel-node ./test/test.js"
+  },
+  "dependencies": {
+    "es6-promise": "^2.3.0",
+    "whatwg-fetch": "^0.9.0",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "flux": "^2.0.3",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.9.11"
+  },
+  "devDependencies": {
+    "babel-core": "^5.5.8",
+    "babel-loader": "^5.1.4",
+    "babel-runtime": "^5.5.8",
+    "bundle-loader": "^0.5.4"
+  }
+}
