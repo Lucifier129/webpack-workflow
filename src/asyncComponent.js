@@ -1,24 +1,27 @@
 import React, { Component } from 'react'
-import Loading from './component/loading'
+import { Loading } from 'component'
 
-export default (request, Loading = Loading) => {
+export default (request, PlaceHoder = Loading) => {
+	if (Component.isPrototypeOf(request)) {
+		return request
+	}
 	return class ComponentLoader extends Component {
 		constructor() {
 			super()
 			this.state = {
-				Component: null
+				AsyncComponent: null
 			}
 		}
 		componentDidMount() {
-			request((Component) => {
+			request((AsyncComponent) => {
 				this.setState({
-					Component: Component
+					AsyncComponent: AsyncComponent
 				})
 			})
 		}
 		render() {
-			let Component = this.state.Component
-			return Component ? <Component {...this.props} /> : <Loading />
+			let AsyncComponent = this.state.AsyncComponent
+			return AsyncComponent ? <AsyncComponent {...this.props} /> : <PlaceHoder />
 		}
 	}
 }

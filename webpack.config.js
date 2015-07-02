@@ -4,11 +4,15 @@ var path = require('path')
 module.exports = {
     cache: false,
     watch: true,
-    entry: './src/app',
+    entry: 'app',
     output: {
+        path: path.join(__dirname, 'dest'),
+        publicPath: '/dest/',
         filename: 'bigger.js',
-        library: 'App',
-        libraryTarget: 'umd'
+        chunkFilename: '[name].chunk.js',
+        jsonpFunction: '__'
+        // library: 'App',
+        // libraryTarget: 'umd'
     },
     plugins: [
         new webpack.BannerPlugin('LastModifyTime:' + new Date().toLocaleString(), {
@@ -30,6 +34,9 @@ module.exports = {
         // you can now require('file') instead of require('file.coffee')
         extensions: ['', '.js', '.jsx', '.es6', '.json'],
         root: path.join(__dirname, 'src'),
-        modulesDirectories: ['node_modules']
+        modulesDirectories: ['node_modules'],
+        alias: {
+            'component': 'component'
+        }
     }
 }

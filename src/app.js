@@ -1,30 +1,22 @@
 import React from 'react'
-import { Route, DefaultRoute, NotFoundRoute, HashLocation, run } from 'react-router'
 import asyncComponent from './asyncComponent'
-
-import Container from './container'
-import Home from './home'
-import NotFound from './notfound'
-import A from 'bundle?lazy&name=a!./a'
-import B from 'bundle?lazy&name=b!./b'
-import C from 'bundle?lazy&name=c!./c'
-import D from 'bundle?lazy&name=d!./d'
+import ReactRouter, { Route, DefaultRoute, NotFoundRoute, HashLocation, run } from 'react-router'
+import { NotFound, Container, Home, A, B, C, D } from 'component'
 
 let routes = (
-  
+  <Route path="/" handler={Container}>
+    <DefaultRoute name="home" handler={asyncComponent(Home)}/>
+    <Route name="aa" path="a" handler={asyncComponent(A)}/>
+    <Route name="bb" path="b" handler={asyncComponent(B)}/>
+    <Route name="cc" path="c" handler={asyncComponent(C)}/>
+    <Route name="dd" path="d" handler={asyncComponent(D)}/>
+    <NotFoundRoute handler={NotFound} />
+  </Route>
 )
 
 
-run(routes, HashLocation, (Root, state) => {
-  React.render(<Root/>, document.getElementById('container'));
+window.router = run(routes, HashLocation, (Root) => {
+	React.render(<Root />, document.getElementById('container'))
 })
-
-export default class App {
-	constructor(config = {}) {
-		this.config = config
-	}
-	getRoutes() {
-		let routes = (
-			)
-	}
-}
+window.routes = routes
+window.ReactRouter = ReactRouter
