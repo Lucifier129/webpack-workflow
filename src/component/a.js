@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 export default class A extends Component {
+	static willTransitionTo(transition, params, query) {
+		console.log(transition, params, query, 'transition to')
+	}
+	static willTransitionFrom(transition, component) {
+		console.log(transition, component, 'transition from')
+	}
 	render() {
 		return (<div className="page active">
 					<h2>name: a</h2>

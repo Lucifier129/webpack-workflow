@@ -15,7 +15,7 @@ let routes = (
 )
 
 
-window.router = run(routes, HashLocation, (Root) => {
+window.router = run(routes, HashLocation, (Root, state) => {
 	React.render(<Root />, document.getElementById('container'))
 })
 window.routes = routes
